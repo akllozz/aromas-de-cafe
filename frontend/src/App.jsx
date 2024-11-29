@@ -18,39 +18,43 @@ import Footer from '../src/components/Footer';
 import Ventas from '../src/components/Ventas';
 
 function App() {
-  const [isLoginVisible, setLoginVisible] = useState(false); 
+  const [isLoginVisible, setLoginVisible] = useState(false);
 
   const handleOpenLogin = () => {
-    setLoginVisible(true); 
+    setLoginVisible(true);
   };
 
   const handleCloseLogin = () => {
-    setLoginVisible(false); 
+    setLoginVisible(false);
   };
 
   return (
     <UserProvider>
       <CartProvider>
         <Router>
-          <Navbar onLoginClick={handleOpenLogin} /> 
-          <Header />
-          {isLoginVisible && (
-            <div className="modal" onClick={handleCloseLogin}>
-              <div className="modal-content" onClick={(e) => e.stopPropagation()}>
-                <span className="close" onClick={handleCloseLogin}>&times;</span>
-                <Login onClose={handleCloseLogin} />
+          <div className="container">
+            <Navbar onLoginClick={handleOpenLogin} />
+            <Header />
+            {isLoginVisible && (
+              <div className="modal" onClick={handleCloseLogin}>
+                <div className="modal-content" onClick={(e) => e.stopPropagation()}>
+                  <span className="close" onClick={handleCloseLogin}>&times;</span>
+                  <Login onClose={handleCloseLogin} />
+                </div>
               </div>
-            </div>
-          )}
-          <Routes>
-            <Route path="/" element={<ProductList />} />
-            <Route path="/register" element={<Register />} />
-            <Route path="/cart" element={<Cart onRequestLogin={handleOpenLogin} />} />
-            <Route path="/politica-privacidad" element={<PoliticaPrivacidad />} />
-            <Route path="/terminos-de-servicio" element={<TerminosDeServicio />} />
-            <Route path="/ventas" element={<Ventas />} />
-          </Routes>
-          <Footer onOpenLogin={handleOpenLogin} /> 
+            )}
+            <main>
+              <Routes>
+                <Route path="/" element={<ProductList />} />
+                <Route path="/register" element={<Register />} />
+                <Route path="/cart" element={<Cart onRequestLogin={handleOpenLogin} />} />
+                <Route path="/politica-privacidad" element={<PoliticaPrivacidad />} />
+                <Route path="/terminos-de-servicio" element={<TerminosDeServicio />} />
+                <Route path="/ventas" element={<Ventas />} />
+              </Routes>
+            </main>
+            <Footer onOpenLogin={handleOpenLogin} />
+          </div>
         </Router>
       </CartProvider>
     </UserProvider>

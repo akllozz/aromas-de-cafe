@@ -38,9 +38,9 @@ function Navbar({ onLoginClick }) {
                     <Link className="nav-link" to="/ventas">Ventas</Link>
                   </li>
                 )}
-                <li className="nav-item">
+                {/* <li className="nav-item">
                   <Link className="nav-link" to="/ventas">Ventas</Link>
-                </li>
+                </li> */}
                 <li className="nav-item">
                   <a className="nav-link" href="#" onClick={handleLogout}>
                     <FontAwesomeIcon icon={faSignOutAlt} /> Cerrar Sesión
